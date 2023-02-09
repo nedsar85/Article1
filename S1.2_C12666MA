@@ -3,7 +3,7 @@
 #define SPEC_VIDEO     PA0   //A0
 #define SPEC_CHANNELS    256
 uint16_t data[SPEC_CHANNELS];
-char userInput;    // 24-05 added to test, can delete if needed
+char userInput;    // Debug, can delete if needed
 
 void setup() {
   pinMode(SPEC_ST, OUTPUT);
@@ -17,15 +17,16 @@ void setup() {
 }
   void readSpectrometer()
 {
-  int delay_time = 1;     // delay per half clock (in microseconds).  This ultimately conrols the integration time.
+  int delay_time = 1;     // delay per half clock (in microseconds).  This conrols the integration time.
   int idx = 0;
-  int read_time = 35;      // Amount of time that the analogRead() procedure takes (in microseconds) (different micros will have different times) 
+  int read_time = 35;      // Amount of time that the analogRead() procedure takes (in microseconds)
   int intTime = 800; 
   int accumulateMode = false;
   int i;
 
   // Step 1: start leading clock pulses
-  for (int i = 0; i < SPEC_CHANNELS; i++) {
+  for (int i = 0; i < SPEC_CHANNELS; i++) 
+  {
     digitalWrite(SPEC_CLK, LOW);
     delayMicroseconds(delay_time);
     digitalWrite(SPEC_CLK, HIGH);
