@@ -24,3 +24,7 @@ https://www.hamamatsu.com/content/dam/hamamatsu-photonics/sites/documents/99_SAL
 ○ S1.5 Code to calculate sensor the Dark Noise (Turn-off your light source to take this measurement)
 
 ○ S1.6 Code to calulate the Reflectance Curves and Thickness calculation using IIM 
+
+• STL Files for 3D printed device
+
+○ S1.7 Folder containing STL files
