@@ -1,0 +1,99 @@
+import time
+import serial
+import matplotlib.pyplot as plt
+import csv           
+from ini_read import getINI # Gives acces to getINI Function
+from serial.tools import list_ports
+import pandas as pd
+
+# PATH DEFINITION
+path_calib=r'Use your path to \calibration_data_.csv' # Path to csv with csensor calibration data per pixel
+
+# CONSTANT
+headers = ['P1','P2','P3','P4','P5','P6','P7','P8','P9','P10','P11','P12','P13','P14','P15','P16','P17','P18','P19','P20','P21','P22','P23','P24','P25','P26','P27',
+'P28','P29','P30','P31','P32','P33','P34','P35','P36','P37','P38','P39','P40','P41','P42','P43','P44','P45','P46','P47','P48','P49','P50','P51','P52','P53','P54','P55',
+'P56','P57','P58','P59','P60','P61','P62','P63','P64','P65','P66','P67','P68','P69','P70','P71','P72','P73','P74','P75','P76','P77','P78','P79','P80','P81','P82','P83',
+'P84','P85','P86','P87','P88','P89','P90','P91','P92','P93','P94','P95','P96','P97','P98','P99','P100','P101','P102','P103','P104','P105','P106','P107','P108','P109',
+'P110','P111','P112','P113','P114','P115','P116','P117','P118','P119','P120','P121','P122','P123','P124','P125','P126','P127','P128','P129','P130','P131','P132','P133',
+'P134','P135','P136','P137','P138','P139','P140','P141','P142','P143','P144','P145','P146','P147','P148','P149','P150','P151','P152','P153','P154','P155','P156','P157',
+'P158','P159','P160','P161','P162','P163','P164','P165','P166','P167','P168','P169','P170','P171','P172','P173','P174','P175','P176','P177','P178','P179','P180','P181',
+'P182','P183','P184','P185','P186','P187','P188','P189','P190','P191','P192','P193','P194','P195','P196','P197','P198','P199','P200','P201','P202','P203','P204','P205',
+'P206','P207','P208','P209','P210','P211','P212','P213','P214','P215','P216','P217','P218','P219','P220','P221','P222','P223','P224','P225','P226','P227','P228','P229',
+'P230','P231','P232','P233','P234','P235','P236','P237','P238','P239','P240','P241','P242','P243','P244','P245','P246','P247','P248','P249','P250','P251','P252','P253',
+'P254','P255','P256']
+
+# FUNCTIONS
+
+def get_x_values():
+    df = pd.read_csv (path_calib) 
+    r_data = df.s1_22E00786 # <- MODIFY FOR EACH SENSOR
+    r_data = r_data.values.tolist()    # Convert pandas DataFrame to List of list
+    xs = r_data
+    return(xs)
+
+# CSV creation truncate method
+f = open ("RAW_DARK_NOISE.csv","w",newline='')
+f.truncate()
+#Writing headers to CSV file
+writer = csv.writer(f, delimiter=',')
+writer.writerow(headers)
+
+# Asking user to start/Importing variables
+userInput = input('TURN OFF THE LIGHT and click "y" to start measurements: ')
+if userInput == 'y' or 'Y':
+    iniData = getINI()   # <- GET NUMROWS FROM EXTERNAL FILE
+    numRowsCollect = int (iniData['numRowsCollect']) #Gets data from external textfile (NOTE: this is a dictionary string defined by the key '')    
+    numPixels = int (iniData['numPixels']) #Gets data from external textfile (NOTE: this is a dictionary string defined by the key '')
+    lastObs = int (iniData['lastObservations'])
+    
+    # Clearing serial COM and reset ARDUINO
+    serialCom = serial.Serial('COM12',9600) 
+    time.sleep(4)
+    serialCom.write(b'y') #Sending "y" to ARDUINO
+    serialCom.flushInput()
+    serialCom.setDTR(True)
+
+    # READ DATA FROM ARDUINO and PRINT TO SHELL
+    for i in range(0,numRowsCollect):
+        arduinoData = serialCom.readline().decode()
+        arduinoData = arduinoData.replace('\r', '')  ## Removes \r
+        arduinoData = arduinoData.replace('\n', '')  ## Removes \n
+        
+        # Split data and convert to LIST-INTEGERS
+        y_values = [int(x) for x in arduinoData.split()]
+        print(y_values)
+
+        #Writing to CSV
+        #writer = csv.writer(f,delimiter=",")
+        writer.writerow(y_values)
+ 
+f.close()
+
+# START AVERAGE CALCULATIONS:
+df = pd.read_csv ("RAW_DARK_NOISE.csv")
+df.head()
+#Capturing the LAST OBSERVATIONS and then calculate AVERAGE:
+lastObsData = (df.iloc[0:(numPixels-1)][-lastObs:])
+df2 = pd.DataFrame(lastObsData)
+pandas_averages = df2.mean()
+# Convert pandas DataFrame to List
+avg_List = pandas_averages.values.tolist()
+print ("The following is the DARK NOISE average of the last: ", lastObs, "observations")
+print (avg_List)
+
+#Writing to file
+f2 = open ("DARK_NOISE_AVG.csv","w",newline='')
+f2.truncate()
+writer = csv.writer(f2, delimiter=',')
+writer.writerow(headers)
+writer.writerow(avg_List)
+f2.close()
+
+# PLOT averaged Noise
+x_values = get_x_values()
+       
+plt.plot(x_values,avg_List, marker='*',linewidth=1.5)
+plt.title('Averaged Noise per Wavelenght')
+plt.xlabel('Wavelength')
+plt.ylabel('Rel. Intensity (Counts)')
+plt.show()
