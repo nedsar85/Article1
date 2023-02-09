@@ -16,7 +16,11 @@ See Spec sheet for timing charts:
 https://www.hamamatsu.com/content/dam/hamamatsu-photonics/sites/documents/99_SALES_LIBRARY/ssd/c12666ma_kacc1216e.pdf
 
 • PYTHON CODE TO ENABLE REFLECTANCE CURVES AND THICKNESS CALCULATION
+
 ○ S1.3 Code to find the intial peak calibration. (Set peak to 90% of total available counts ~950 if using a 10bit ADC)
+
 ○ S1.4 Code to calculate the Reference spectrum to intiate the reflectance calculation
+
 ○ S1.5 Code to calculate sensor the Dark Noise (Turn-off your light source to take this measurement)
+
 ○ S1.6 Code to calulate the Reflectance Curves and Thickness calculation using IIM 
