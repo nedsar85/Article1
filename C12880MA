@@ -1,7 +1,3 @@
-// This code is based on and modified according to:
-// Groupgets, “C12880MA - Github Repository,” 2016. https://github.com/groupgets/c12880ma/blob/master/arduino_c12880ma_example/arduino_c12880ma_example.ino
-// See Spec sheet for timing charts: https://www.hamamatsu.com/content/dam/hamamatsu-photonics/sites/documents/99_SALES_LIBRARY/ssd/c12880ma_kacc1226e.pdf
-
 #define SPEC_ST        PB7   //D4
 #define SPEC_CLK       PB6   //D5
 #define SPEC_VIDEO     PA0   //A0
@@ -27,7 +23,8 @@ uint16_t data[SPEC_CHANNELS];
  * Look at the Timing Chart in the Datasheet for more info
  */
  
-void readSpectrometer() {                             // ############# READING SPECTRO ###################
+ // ############# READING SPECTRO ###################
+void readSpectrometer() {                     
   uint8_t delayTime = 1; // delay time
 
   // Start clock cycle and set start pulse (SPEC_ST) to signal start
