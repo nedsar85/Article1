@@ -1,8 +1,12 @@
-// This code is a modified from the original sketch from ktasich01
-// https://github.com/ktasich01/C12666MA/blob/main/c12666ma_code.ino
-// This code removes the external ADC and uses the internal ADC instead. 
-// This codes adapts the STM board inputs and adds a serial interface
+// This code is inspired from the original sketch from Peter Jansen
+// https://github.com/tricorderproject/arducordermini and an adapted 
+// from Kurt Kiefer (Groupgets/Pure engineering):
+// https://github.com/groupgets/c12666ma/blob/master/arduino_csv_example/arduino_csv_example.ino
+// See the end ot this code for Pure Engineering Copyright notice.
+// 
+// Nestor Sanchez version: This code adapts the STM board inputs and adds a serial interface
 // to work with Python.
+// See STM github to e nable STM programming with Arduino: https://github.com/stm32duino/Arduino_Core_STM32
 
 #define SPEC_ST        PB7   //D4
 #define SPEC_CLK       PB6   //D5
@@ -158,3 +162,27 @@ void loop()
     }  
   }
 }
+
+
+// Copyright (c) 2015, Pure Engineering
+// All rights reserved.
+//Redistribution and use in source and binary forms, with or without
+//modification, are permitted provided that the following conditions are met:
+//
+//* Redistributions of source code must retain the above copyright notice, this
+//  list of conditions and the following disclaimer.
+
+//* Redistributions in binary form must reproduce the above copyright notice,
+//  this list of conditions and the following disclaimer in the documentation
+//  and/or other materials provided with the distribution.
+
+//THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+//AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+//IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+//DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+//FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+//DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+//SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+//CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+//OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+//OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
