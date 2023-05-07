@@ -1,7 +1,9 @@
 // This code is based and modified according to:
+// https://doi.org/10.1016/j.snb.2019.127537 who based the code on:
 // Groupgets, “C12880MA - Github Repository,” 2016.
 // https://github.com/groupgets/c12880ma/blob/master/arduino_c12880ma_example/arduino_c12880ma_example.ino
-// This codes adapts the STM board inputs and adds a serial interface
+// 
+// nedsar85 version: This codes adapts the STM board inputs and adds a serial interface
 // to work with Python.
 
 #define SPEC_ST        PB7   //D4
@@ -136,5 +138,5 @@ while (true) {              // start spectrometer readings
 }
 
 
-/* Check: 
-// https://stackoverflow.com/questions/22583391/peak-signal-detection-in-realtime-timeseries-data*/
+/* 
+// 
