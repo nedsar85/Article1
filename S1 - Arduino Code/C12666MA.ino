@@ -4,7 +4,7 @@
 // https://github.com/groupgets/c12666ma/blob/master/arduino_csv_example/arduino_csv_example.ino
 // See the end of the code for Copyright notice.
 // 
-// Nestor Sanchez version: This code adapts the STM board inputs and adds a serial interface
+// nedsar85 version: This code adapts the STM board inputs and adds a serial interface
 // to work with Python.
 // See STM github enable STM board with Arduino: https://github.com/stm32duino/Arduino_Core_STM32
 
