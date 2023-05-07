@@ -1,12 +1,12 @@
 // This code is inspired from the original sketch from Peter Jansen
-// https://github.com/tricorderproject/arducordermini and an adapted 
-// from Kurt Kiefer (Groupgets/Pure engineering):
+// https://github.com/tricorderproject/arducordermini and 
+// from Kurt Kiefer (Groupgets):
 // https://github.com/groupgets/c12666ma/blob/master/arduino_csv_example/arduino_csv_example.ino
-// See the end ot this code for Pure Engineering Copyright notice.
+// See the end of the code for Copyright notice.
 // 
 // Nestor Sanchez version: This code adapts the STM board inputs and adds a serial interface
 // to work with Python.
-// See STM github to e nable STM programming with Arduino: https://github.com/stm32duino/Arduino_Core_STM32
+// See STM github enable STM board with Arduino: https://github.com/stm32duino/Arduino_Core_STM32
 
 #define SPEC_ST        PB7   //D4
 #define SPEC_CLK       PB6   //D5
