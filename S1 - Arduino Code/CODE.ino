@@ -188,5 +188,18 @@ void loop()
 //OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 // ######
-// STMDUINO Library license: BSD 3-Clause License
+// STM allows use of library under the following licenses
+// • STMDUINO Library license: BSD 3-Clause License
 // Copyright (c) 2017, STMicroelectronics All rights reserved.
+
+// • LGPLv2.1
+// Copyright (C) 1991, 1999 Free Software Foundation, Inc. 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA 
+// Everyone is permitted to copy and distribute verbatim copies of this license document, but changing it is not allowed.
+
+// • Ultimate Liberty License
+// This software component is licensed by ST under Ultimate Liberty license SLA0044, the "License"; You may not use this file except in compliance with the License. You may obtain a copy of the License at: http://www.st.com/SLA0044
+
+// • Apache License
+// Version 2.0, January 2004  http://www.apache.org/licenses/
+
+// Full description of terms and conditions: // https://github.com/stm32duino/Arduino_Core_STM32/blob/main/License.md#Ultimate-Liberty-License
