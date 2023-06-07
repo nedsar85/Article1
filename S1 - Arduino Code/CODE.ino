@@ -6,7 +6,7 @@
 // 
 // nedsar85 version: This code adapts the STM board inputs and adds a serial interface
 // to work with Python.
-// See STM github enable STM board with Arduino: https://github.com/stm32duino/Arduino_Core_STM32
+// See STM github enable STM board with Arduino:  https://github.com/stm32duino/Arduino_Core_STM32/wiki/Getting-Started
 
 #define SPEC_ST        PB7   //D4
 #define SPEC_CLK       PB6   //D5
